@@ -1,0 +1,127 @@
+[
+  {
+    "name": "CrisisEscalation_Protocol",
+    "description": "Safety-Critical: Use for aggression, self-harm, or intense meltdowns.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "crisis_type": {
+          "type": "string",
+          "enum": [
+            "aggression",
+            "meltdown",
+            "prolonged_meltdown",
+            "self_harm",
+            "medical"
+          ]
+        },
+        "immediate_danger": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "crisis_type",
+        "immediate_danger"
+      ]
+    }
+  },
+  {
+    "name": "NoiseReduction_Advisor",
+    "description": "Strategies for auditory overload (D1).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string"
+        },
+        "noise_source": {
+          "type": "string"
+        },
+        "distress_level": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      },
+      "required": [
+        "location",
+        "noise_source",
+        "distress_level"
+      ]
+    }
+  },
+  {
+    "name": "VisualSchedule_Creator",
+    "description": "Create transition support for anxiety.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "activities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "environment": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "activities",
+        "environment"
+      ]
+    }
+  },
+  {
+    "name": "SensoryNeeds_Assessor",
+    "description": "Assess sensory profiles (D1-D6).",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "observed_behaviors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "suspected_modality": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "observed_behaviors"
+      ]
+    }
+  },
+  {
+	"name": "EmotionalRegulation_Guide",
+	"description": "Calming strategies for early escalation. Requires age and time parameters for clinical safety.",
+	"parameters": {
+		"type": "object",
+		"properties": {
+		"student_age": {
+			"type": "integer",
+			"description": "Required for age-appropriate technique selection. Range: 7-17."
+		},
+		"current_stress_level": {
+			"type": "string",
+			"enum": ["low", "medium", "high"],
+			"description": "Exact key name. Do not abbreviate."
+		},
+		"preferred_modality": {
+			"type": "string",
+			"enum": ["visual", "audio", "tactile", "proprioceptive"],
+			"description": "Exact key name. Do not abbreviate."
+		},
+		"time_available_sec": {
+			"type": "integer",
+			"description": "Required for monitoring & sequence completion. Range: 30-180."
+		}
+		},
+		"required": ["student_age", "current_stress_level", "preferred_modality", "time_available_sec"]
+	}
+  }
+]
